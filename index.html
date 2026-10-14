@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="FitBefore helps you check clothing measurements, garment length and fit before shopping.">
+<title>FitBefore | اعرفي مقاسك قبل الشراء</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#faf8f4;color:#292e29;font-family:Arial,sans-serif;line-height:1.8}
+header{background:#fff;border-bottom:1px solid #e5e5dc;padding:18px 6%}
+nav{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}
+.logo{font-size:27px;font-weight:bold;color:#526c58}
+nav a{color:#354b3b;text-decoration:none;margin:5px}
+.container{width:90%;max-width:1050px;margin:auto}
+.hero{padding:75px 0;text-align:center}
+.hero h1{font-size:clamp(32px,5vw,52px);line-height:1.3}
+.hero h1 span{color:#526c58}
+.hero p{font-size:18px;color:#656b63;max-width:650px;margin:20px auto}
+.btn{display:inline-block;background:#526c58;color:#fff;padding:12px 22px;border:0;border-radius:8px;text-decoration:none;cursor:pointer;font-size:16px}
+section{padding:45px 0}
+h2{text-align:center;font-size:30px}
+.intro{text-align:center;color:#6b7069}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.card,.tool,.page{background:white;border:1px solid #e6e4dc;border-radius:14px;padding:25px}
+.card h3{color:#526c58}
+.tool{max-width:680px;margin:auto}
+label{display:block;font-weight:bold;margin:14px 0 5px}
+input,select{width:100%;padding:12px;border:1px solid #d6d9d0;border-radius:7px;background:#fff;font-size:16px}
+button{margin-top:20px}
+.result{display:none;background:#edf2e9;border-radius:10px;padding:18px;margin-top:20px}
+.note{background:#e8eee4;padding:25px;border-radius:12px;text-align:center}
+footer{padding:30px 5%;border-top:1px solid #e3e2da;text-align:center}
+footer a{color:#526c58;text-decoration:none;margin:8px}
+small{color:#686e66}
+.page{margin:35px auto;max-width:850px}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+
+<header>
+<nav>
+<a class="logo" href="#home">FitBefore</a>
+<div>
+<a href="#home">الرئيسية</a>
+<a href="#checker">فحص القطعة</a>
+<a href="#about">عن الموقع</a>
+</div>
+</nav>
+</header>
+
+<main>
+<div class="container hero" id="home">
+<p>تسوّقي بثقة أكبر</p>
+<h1>قبل ما تشتريها،<br><span>تأكدي إنها بتناسبك</span></h1>
+<p>أدوات عملية تساعدك على فهم مقاسات الملابس وطولها وقصّتها قبل الطلب، مع اهتمام خاص بتفضيلات الملابس المحتشمة.</p>
+<a class="btn" href="#checker">ابدئي فحص القطعة</a>
+</div>
+
+<section>
+<div class="container">
+<h2>اختيار أذكى قبل الشراء</h2>
+<p class="intro">تفاصيل بسيطة قد تساعدك على اتخاذ قرار أفضل.</p>
+<div class="cards">
+<article class="card">
+<h3>📏 دليل المقاسات</h3>
+<p>تعلّمي كيف تقارنين قياسات جسمك بجدول المقاسات الخاص بالمتجر.</p>
+</article>
+<article class="card">
+<h3>👗 طول الملابس</h3>
+<p>راجعي طول القطعة وحددي الطول الذي تفضلينه قبل إتمام طلبك.</p>
+</article>
+<article class="card">
+<h3>🧵 القصّة والاتساع</h3>
+<p>ضعي تفضيلاتك بشأن الملابس الواسعة والطول والتغطية في الاعتبار.</p>
+</article>
+</div>
+</div>
+</section>
+
+<section id="checker">
+<div class="container">
+<h2>افحصي طول القطعة</h2>
+<p class="intro">أدخلي القياسات للحصول على إرشاد أولي.</p>
+
+<div class="tool">
+<form id="fitForm">
+<label for="height">طولك بالسنتيمتر</label>
+<input id="height" type="number" min="100" max="220" placeholder="مثال: 160" required>
+
+<label for="length">طول قطعة الملابس بالسنتيمتر</label>
+<input id="length" type="number" min="10" max="200" placeholder="مثال: 135" required>
+
+<label for="type">نوع القطعة</label>
+<select id="type">
+<option value="dress">فستان</option>
+<option value="skirt">تنورة</option>
+<option value="top">بلوزة أو تونيك</option>
+<option value="trousers">بنطال</option>
+<option value="coat">معطف أو عباءة</option>
+</select>
+
+<label for="preference">القصّة التي تفضلينها</label>
+<select id="preference">
+<option>واسعة ومريحة</option>
+<option>عادية</option>
+<option>محددة الشكل</option>
+</select>
+
+<button class="btn" type="submit">اعرضي النتيجة</button>
+</form>
+
+<div class="result" id="result" aria-live="polite"></div>
+<small>النتيجة تقديرية؛ فالطول وحده لا يحدد المقاس أو مكان انتهاء القطعة بدقة.</small>
+</div>
+</div>
+</section>
+
+<section>
+<div class="container">
+<div class="note">
+<h2>لا تعتمدي على الطول وحده</h2>
+<p>للمساعدة في اختيار المقاس، قارني قياسات الصدر والخصر والأرداف بجدول المتجر، وراجعي مرونة القماش وسياسة الإرجاع قبل الشراء.</p>
+</div>
+</div>
+</section>
+
+<section id="about">
+<div class="container page">
+<h2>عن FitBefore</h2>
+<p>FitBefore مشروع يهدف إلى مساعدة المتسوقات على فهم قياسات الملابس وطولها وقصّتها قبل الشراء. نقدم أدوات إرشادية ومعلومات عملية لدعم قرارات تسوق أكثر وعيًا، بما فيها تفضيلات الملابس المحتشمة.</p>
+<p>لا تضمن نتائج الأدوات ملاءمة القطعة، فقد تختلف القياسات بين المنتجات والعلامات التجارية.</p>
+</div>
+</section>
+
+<section id="privacy">
+<div class="container page">
+<h2>سياسة الخصوصية</h2>
+<p>تعمل حاسبة الطول في هذه النسخة داخل المتصفح، ولا ترسل القياسات المدخلة إلى خادم الموقع.</p>
+<p>قبل تفعيل الإعلانات أو الخدمات الخارجية، يجب توضيح كيفية تعامل تلك الخدمات مع ملفات تعريف الارتباط والبيانات، وتحديث هذه السياسة وفق الخدمات المستخدمة فعليًا.</p>
+<p>للاستفسارات، أضيفي بريد التواصل الخاص بالموقع قبل النشر.</p>
+</div>
+</section>
+
+<section id="terms">
+<div class="container page">
+<h2>الشروط وإخلاء المسؤولية</h2>
+<p>المعلومات والأدوات في FitBefore لأغراض إرشادية فقط، ولا تضمن اختيار المقاس المناسب. تختلف قياسات الملابس بحسب المنتج والقماش وطريقة القياس.</p>
+<p>راجعي جدول المقاسات ووصف المنتج وسياسة الإرجاع لدى المتجر قبل الشراء.</p>
+</div>
+</section>
+</main>
+
+<footer>
+<a href="#about">عن الموقع</a>
+<a href="#privacy">سياسة الخصوصية</a>
+<a href="#terms">الشروط</a>
+<p><small>© <span id="year"></span> FitBefore. جميع الحقوق محفوظة.</small></p>
+</footer>
+
+<script>
+document.getElementById("year").textContent=new Date().getFullYear();
+
+document.getElementById("fitForm").addEventListener("submit",function(e){
+e.preventDefault();
+
+const height=Number(document.getElementById("height").value);
+const length=Number(document.getElementById("length").value);
+const type=document.getElementById("type").value;
+const preference=document.getElementById("preference").value;
+const result=document.getElementById("result");
+
+if(height<100||height>220||length<10||length>200){
+result.style.display="block";
+result.textContent="يرجى التأكد من إدخال قياسات صحيحة.";
+return;
+}
+
+let advice="قارني طول القطعة بوصف المنتج وجدول المقاسات لمعرفة مدى ملاءمتها.";
+
+if(type==="top"){
+advice="لا يمكن تحديد مكان انتهاء البلوزة من طولك وحده؛ يلزم أيضًا معرفة طول الجذع وموضع بداية القياس.";
+}else if(type==="trousers"){
+advice="راجعي طول الساق الداخلي للقطعة وقارنيه بقياسات البنطال لدى المتجر.";
+}else{
+advice="طول القطعة أقل من طولك بمقدار "+(height-length)+" سم، لكن هذا لا يحدد وحده مكان انتهائها عند ارتدائها.";
+}
+
+result.innerHTML=
+"<h3>نتيجتك الأولية</h3>"+
+"<p>طولك: "+height+" سم</p>"+
+"<p>طول القطعة: "+length+" سم</p>"+
+"<p>تفضيل القصّة: "+preference+"</p>"+
+"<p>"+advice+"</p>"+
+"<p>لنتيجة أدق، راجعي قياسات المنتج الرسمية قبل الشراء.</p>";
+
+result.style.display="block";
+});
+</script>
+
+</body>
+</html>
